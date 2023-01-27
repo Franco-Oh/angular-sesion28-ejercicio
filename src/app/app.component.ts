@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +13,7 @@ export class AppComponent {
   msgCorreoInvalido = false;
   msgCorreoValido = false;
 
-  constructor( private router:Router, private formBuilder: FormBuilder ){
+  constructor( private formBuilder: FormBuilder ){
     this.formLogin = new FormGroup({
       user: new FormControl(),
       password: new FormControl(),
@@ -28,7 +27,7 @@ export class AppComponent {
         [
           Validators.required,
           Validators.minLength(5),
-          Validators.pattern('^[a-zA-Z0-9]+$')
+          Validators.email
         ]
       ],
       password:['', 

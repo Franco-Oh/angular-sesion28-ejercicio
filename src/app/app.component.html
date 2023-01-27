@@ -7,7 +7,7 @@
             <label for="user" class="text-lg font-medium text-gray-900 mr-3">Username: </label>
             <input type="text" name="user" id="user" placeholder="Ingresar usuario" formControlName="user" class="px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:border-blue-500 focus:outline-none focus:drop-shadow-lg"><br>
             <span appValidacion *ngIf="this.formLogin.get('user')?.invalid">
-                <span *ngIf="this.formLogin.get('user')?.dirty" class="text-red-600">(Debe tener mínimo 5 caracteres. No símbolos.)</span>
+                <span *ngIf="this.formLogin.get('user')?.dirty" class="text-red-600">(Debe ser un correo de mínimo 5 caracteres)</span>
             </span><br>
         </div>
         <div>

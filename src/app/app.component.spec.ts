@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        ReactiveFormsModule
       ],
       declarations: [
         AppComponent
@@ -20,16 +22,29 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ejercicio-28'`, () => {
+  it('Espero que el formulario sea invalido', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ejercicio-28');
-  });
 
-  it('should render title', () => {
+    let user = app.formLogin.controls['user'];
+    let password = app.formLogin.controls['password'];
+
+    user.setValue('12345');
+    password.setValue('a@b.com');
+
+    expect(app.formLogin.invalid).toBeFalsy();
+  })
+
+  it('Espero que el formulario sea valido', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('ejercicio-28 app is running!');
-  });
+    const app = fixture.componentInstance;
+
+    let user = app.formLogin.controls['user'];
+    let password = app.formLogin.controls['password'];
+
+    user.setValue('a@b.com');
+    password.setValue('12345');
+
+    expect(app.formLogin).toBeTruthy();
+  })
 });
