@@ -27,13 +27,15 @@ export class AppComponent {
       user:['', 
         [
           Validators.required,
-          Validators.minLength(5)
+          Validators.minLength(5),
+          Validators.pattern('^[a-zA-Z0-9]+$')
         ]
       ],
       password:['', 
         [
           Validators.required,
-          Validators.minLength(4)
+          Validators.minLength(4),
+          Validators.pattern('^[a-zA-Z0-9]+$')
         ]
       ],
       termino:['', 
